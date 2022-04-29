@@ -1,0 +1,59 @@
+@startuml
+
+ class "Сетевые задания" as MasterClass {
+ ..Атрибуты..
+ RN
+ METHOD
+ REST_SERVICE - Логический
+ RESOURCE - Логический
+ PARAMS
+ BODY
+ CREATED
+ STATUS
+ DONE_DATE
+ UNTIL_SUCC
+ STATUSEX
+ ERROREX
+ ..Пользовательские действия..
+ {method}+Добавить (P_UDO_RGISNT_INSERT)
+ {method}+Просмотр (P_UDO_RGISNT_VIEW)
+ {method}+Журнал транспорта (P_UDO_RGISNT_JT)
+ ..Методы транспорта..
+ {method}+Обработать событие окончания отправки (P_UDO_RGISNT_EXEC)
+ ..Методы..
+ {method}+Обновить статус задания (P_UDO_RGISNT_MDF_STATUS)
+ }
+
+ class "Результаты сетевых заданий" as SpecClass1 {
+ ..Атрибуты..
+ RN
+ PRN
+ CYCLE_GUID
+ ITER_GUID
+ RGUID
+ FIRST_DATE
+ LAST_DATE
+ CALL_COUNT
+ TRANSP_CODE
+ TRANSP_ERR
+ HTTP_CODE
+ RESULT
+ ..Пользовательские действия..
+ {method}+Просмотр (P_UDO_PLOEOR_VIEW)
+ {method}+Журнал транспорта (P_UDO_RGISNTR_JT)
+ ..Методы транспорта..
+ {method}+Добавить результат (P_UDO_RGISNTR_RESP_ADD)
+ ..Методы..
+ {method}+Обновить результат (P_UDO_RGISNTR_RESP_UPDATE)
+ }
+
+ class "Журнал транспорта" as SpecClass2 {
+ ..Пользовательские действия..
+ {method}+Метод добавить событие (P_UDO_PLOEOJT_ADD)
+ {method}+Просмотр (P_UDO_PLOEOJT_VIEW)
+ }
+
+ MasterClass "1" *-- "много" SpecClass1
+ SpecClass1 "1" *-- "много" SpecClass2
+
+ @enduml

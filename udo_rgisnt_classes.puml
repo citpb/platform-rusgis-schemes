@@ -39,7 +39,7 @@
  HTTP_CODE
  RESULT
  ..Пользовательские действия..
- {method}+Просмотр (P_UDO_PLOEOR_VIEW)
+ {method}+Просмотр (P_UDO_RGISNT_VIEW)
  {method}+Журнал транспорта (P_UDO_RGISNTR_JT)
  ..Методы транспорта..
  {method}+Добавить результат (P_UDO_RGISNTR_RESP_ADD)
@@ -55,5 +55,5 @@
 
  MasterClass "1" *-- "много" SpecClass1
  SpecClass1 "1" *-- "много" SpecClass2
-
+ MasterClass "1" *-- "много" SpecClass2
  @enduml

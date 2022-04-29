@@ -1,0 +1,49 @@
+@startuml
+
+ class "REST сервисы" as MasterClass {
+ ..Атрибуты..
+ RN
+ CRN
+ CODE
+ NAME
+ BASE_ADR
+ ..Пользовательские действия..
+ {method}+Добавить (P_UDO_RGISRS_INSERT)
+ {method}+Исправить (P_UDO_RGISRS_UPDATE)
+ {method}+Удалить (P_UDO_RGISRS_DELETE)
+ {method}+Просмотр (P_UDO_RGISRS_FRM)
+ }
+
+ class "Ресурсы" as SpecClass1 {
+ ..Атрибуты..
+ RN
+ PRN
+ CODE
+ NAME
+ BASE_RES
+ ..Пользовательские действия..
+ {method}+Добавить (P_UDO_RGISRSR_INS)
+ {method}+Исправить (P_UDO_RGISRSR_UPD)
+ {method}+Удалить (P_UDO_RGISRSR_DELETE)
+ {method}+Просмотр (P_UDO_RGISRSR_FRM)
+ }
+
+ class "Методы" as SpecClass2 {
+ ..Атрибуты..
+ RN
+ PRN
+ CODE
+ NAME
+ METHOD
+ PROC
+ ..Пользовательские действия..
+ {method}+Добавить (P_UDO_RGISRSRM_INS)
+ {method}+Исправить (P_UDO_RGISRSRM_UPD)
+ {method}+Удалить (P_UDO_RGISRSRM_DELETE)
+ {method}+Просмотр (P_UDO_RGISRSRM_FRM)
+ }
+
+ MasterClass "1" *-- "много" SpecClass1
+ SpecClass1 "1" *-- "много" SpecClass2
+ 
+ @enduml
